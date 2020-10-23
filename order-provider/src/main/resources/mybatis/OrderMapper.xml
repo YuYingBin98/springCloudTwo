@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jk.yyb.mapper.OrderMapper" >
+  <resultMap id="BaseResultMap" type="com.jk.yyb.entity.OrderEntity" >
+    <id column="order_id" property="orderId" jdbcType="INTEGER" />
+    <result column="order_num" property="orderNum" jdbcType="INTEGER" />
+    <result column="order_name" property="orderName" jdbcType="VARCHAR" />
+    <result column="order_price" property="orderPrice" jdbcType="DECIMAL" />
+    <result column="order_time" property="orderTime" jdbcType="TIMESTAMP" />
+    <result column="zhifu_id" property="zhifuId" jdbcType="INTEGER" />
+  </resultMap>
+  <!--<select id="find" resultMap="BaseResultMap">
+
+   select * from tb_order o left join tb_zhifu z on o.zhifu_id=z.zhifu_id
+  </select>-->
+  <insert id="insert">
+    insert into tb_order values(#{orderId},#{orderNum},#{orderName},#{orderPrice},null,#{zhifuId)
+  </insert>
+  <delete id="deleteByPrimaryKey">
+    delete from tb_order where order_id=#{id}
+  </delete>
+</mapper>

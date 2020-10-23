@@ -1,0 +1,11 @@
+server:
+  port: 8772
+
+spring:
+  application:
+    name: two-provider
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8752/eureka

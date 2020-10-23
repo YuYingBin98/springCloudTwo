@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/3.3.7/dist/css/bootstrap.css}">
+    <script th:src="@{/webjars/jquery/3.5.1/dist/jquery.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/3.3.7/dist/js/bootstrap.min.js}"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>订单列表</h1>
+        <div class="text-left">
+            <a class="btn btn-info" th:href="@{toAdd}">Add</a>
+        </div>
+        <table  class="table  table-hover">
+            <thead>
+                <tr>
+                    <th>用户Id</th>
+                    <th>用户账号</th>
+                    <th>用户名称</th>
+                    <th>密码</th>
+                    <th>盐</th>
+                    <th>状态</th>
+                    <th>删除</th>
+                    <th>修改</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="user : ${userList}">
+                    <td th:text="${user.id}"></td>
+                    <td th:text="${user.usercode}"></td>
+                    <td th:text="${user.username}"></td>
+                    <td th:text="${user.password}"></td>
+                    <td th:text="${user.salt}"></td>
+                    <td th:text="${user.locked}"></td>
+                    <td>
+                        <a th:href="@{/delete(id=${user.id})}">DELETE</a>
+                    </td>
+                    <td>
+                        <a th:href="@{/select(id=${user.id})}">UPDATE</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

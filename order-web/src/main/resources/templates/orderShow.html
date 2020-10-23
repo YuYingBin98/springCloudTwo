@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/3.3.7/dist/css/bootstrap.css}">
+    <script th:src="@{/webjars/jquery/3.5.1/dist/jquery.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/3.3.7/dist/js/bootstrap.min.js}"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>订单列表</h1>
+        <div class="text-left">
+            <a class="btn btn-info" th:href="@{toAdd}">Add</a>
+        </div>
+        <table  class="table  table-hover">
+            <thead>
+                <tr>
+                    <th>订单ID</th>
+                    <th>订单编号</th>
+                    <th>订单名称</th>
+                    <th>订单价格</th>
+                    <th>订单时间</th>
+                    <th>支付方式</th>
+                    <th>删除</th>
+                    <th>修改</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="order : ${orderList}">
+                    <td th:text="${order.orderId}"></td>
+                    <td th:text="${order.orderNum}"></td>
+                    <td th:text="${order.orderName}"></td>
+                    <td th:text="${order.orderPrice}"></td>
+                    <td th:text="${order.orderTime}"></td>
+                    <td th:text="${order.zhiFuName}"></td>
+                    <td>
+                        <a th:href="@{/delete(id=${order.orderId})}">DELETE</a>
+                    </td>
+                    <td>
+                        <a th:href="@{/select(id=${order.orderId})}">UPDATE</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
